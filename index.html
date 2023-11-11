@@ -10,8 +10,8 @@
             }
             const req = new XMLHttpRequest();
             req.addEventListener("load", reqListener);
-            req.open("GET", "http://127.0.0.1:7007/_api/live");
-            req.send();
+            req.open("GET", "http://127.0.0.1:7007/_api/live", true);
+            req.send(null);
         }
     </script>
 </head>
