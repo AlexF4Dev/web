@@ -5,7 +5,7 @@
     <script>
         function callLocalServer() {
             function reqListener() {
-                //document.getElementById("demo").innerHTML = this.responseText;
+                document.getElementById("demo").innerHTML = this.responseText;
                 console.log(this.responseText);
             }
             const req = new XMLHttpRequest();
@@ -19,7 +19,7 @@
 <body>
     <h2>Call Local Server</h2>
 
-    <!-- <p id="demo">A Paragraph</p> -->
+    <p id="demo">Result</p>
     <button type="button" onclick="callLocalServer()">Call</button>
 
 </body>
