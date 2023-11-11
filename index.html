@@ -1,4 +1,27 @@
+<!DOCTYPE html>
 <html>
-    <body>
-    </body>
+
+<head>
+    <script>
+        function callLocalServer() {
+            function reqListener() {
+                document.getElementById("demo").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+            const req = new XMLHttpRequest();
+            req.addEventListener("load", reqListener);
+            req.open("GET", "http://127.0.0.1:7007/_api/live");
+            req.send();
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Call Local Server</h2>
+
+    <!-- <p id="demo">A Paragraph</p> -->
+    <button type="button" onclick="callLocalServer()">Call</button>
+
+</body>
+
 </html>
