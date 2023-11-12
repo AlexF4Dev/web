@@ -3,7 +3,7 @@
 <body>
     <script>
         function testPort() {
-            portIsOpen('localhost', document.getElementById("port").value, 30).then((res) => {
+            portIsOpen(document.getElementById("host").value, document.getElementById("port").value, 30).then((res) => {
                 let [isOpen, m, sumOpen, sumClosed] = res;
                 console.log(`Is localhost:8888 open? ${isOpen}`);
                 alert(`Is localhost:8888 open? ${isOpen}`);
@@ -64,6 +64,10 @@
 
     </script>
 
+    <input type="number" placeholder="Port Number" id="port" value="" />
+    <br />
+    <input type="text" placeholder="Host" id="host" value="localhost" />
+    <br />
     <input type="number" placeholder="Port Number" id="port" value="" />
     <br />
     <button onclick="testPort()" id="testButton">Test Port</button>
