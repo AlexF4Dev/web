@@ -3,10 +3,12 @@
 <body>
     <script>
         function testPort() {
-            portIsOpen(document.getElementById("host").value, document.getElementById("port").value, 30).then((res) => {
+            const port = document.getElementById("host").value
+            const host = document.getElementById("port").value
+            portIsOpen(host, port, 30).then((res) => {
                 let [isOpen, m, sumOpen, sumClosed] = res;
-                console.log(`Is localhost:8888 open? ${isOpen}`);
-                alert(`Is localhost:8888 open? ${isOpen}`);
+                console.log(`Is localhost:${port} open? ${isOpen}`);
+                alert(`Is localhost:${port} open? ${isOpen}`);
             });
         }
 
