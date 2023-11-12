@@ -311,7 +311,7 @@ padding-bottom: 20px;">
     </p>
 
     <form>
-        <input type="button" id="lan_button" value="Scan 192.168.1.* port 80" onclick="lan_scan(this.form);" />
+        <input type="button" id="lan_button" value="Scan 192.168.10.* port 80" onclick="lan_scan(this.form);" />
         <input type="button" id="lan_button_stop" value="Stop Scan" onclick="lan_stop(this.form);" disabled="disabled"/>
     </form>
 
@@ -479,7 +479,9 @@ padding-bottom: 20px;">
         current_octet = 2;
         stop = false;
 
-        var scanner = new PortScanner("192.168.10." + current_octet, 80);
+        const prefix = "192.168.10.";
+
+        var scanner = new PortScanner(prefix + current_octet, 80);
         scanner.on_stealthed = lan_on_stealthed;
         scanner.on_open_or_closed = lan_on_open_or_closed;
         scanner.run();
@@ -497,7 +499,7 @@ padding-bottom: 20px;">
     function lan_on_stealthed()
     {
         var res_div = document.getElementById("lan_results");
-        res_div.innerHTML += "192.168.1." + current_octet + ": ";
+        res_div.innerHTML += prefix + current_octet + ": ";
         if (this.timed_out) {
             res_div.innerHTML += "Case 2 (no response after 10 seconds). <br />";
         } else {
@@ -513,7 +515,7 @@ padding-bottom: 20px;">
             return;
         }
 
-        var scanner = new PortScanner("192.168.1." + current_octet, 80);
+        var scanner = new PortScanner(prefix + current_octet, 80);
         scanner.on_stealthed = lan_on_stealthed;
         scanner.on_open_or_closed = lan_on_open_or_closed;
         scanner.run();
@@ -522,7 +524,7 @@ padding-bottom: 20px;">
     function lan_on_open_or_closed()
     {
         var res_div = document.getElementById("lan_results");
-        res_div.innerHTML += "192.168.1." + current_octet + ": ";
+        res_div.innerHTML += prefix + current_octet + ": ";
         res_div.innerHTML += "Case 1 (" + this.total_time + " ms). <br />";
 
         current_octet += 1;
@@ -534,7 +536,7 @@ padding-bottom: 20px;">
             return;
         }
 
-        var scanner = new PortScanner("192.168.1." + current_octet, 80);
+        var scanner = new PortScanner(prefix + current_octet, 80);
         scanner.on_stealthed = lan_on_stealthed;
         scanner.on_open_or_closed = lan_on_open_or_closed;
         scanner.run();
